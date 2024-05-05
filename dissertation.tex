@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% package for projects with multiple files
+\usepackage{subfiles}
+
+% formatting packages
+\usepackage[
+    left=1.5in,     % left margin
+    right=1.0in,    % right margin
+    top=1.0in,      % top margin
+    bottom=1.0in,   % bottom margin
+    includefoot     % page number does not protrude into bottom margin
+    ]{geometry}     % set margins
+\usepackage{titlesec}	                    % custom section titles
+\usepackage{caption}                        % table and figure captions
+\usepackage[nodisplayskipstretch]{setspace} % double spacing
+\usepackage[hidelinks]{hyperref} 	        % clickable links/toc
+\usepackage[titles]{tocloft}                % table of contents extension
+\usepackage[sectionbib]{bibunits}           % separate bib by chapter
+\usepackage[
+    section,    % bibliographies are sections, not chapters
+    numbib,     % bibliographies are numbered
+    nottoc,     % do not change table of contents
+    notlof,     % do not change list of figures
+    notlot,     % do not change list of tables
+    ]{tocbibind} % include bibliographies in table of contents
+
+% symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+
+% tables and lists
+\usepackage{enumerate}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{dcolumn}
+
+% images and figures
+\usepackage[dvips,dvipdf]{graphicx}
+
+% additional packages (uncomment/add as needed)
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FORMATTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% chapter, section, subsection titles
+\titleformat{\chapter}[hang]{\bfseries\normalsize\centering}{\thechapter.}{5pt}{}[]
+\titleformat{\section}[hang]{\bfseries}{\thesection.}{5pt}{}[]
+\titleformat{\subsection}[runin]{\bfseries\small}{\thesubsection.}{5pt}{}[:]
+
+% front matter format
+\newcommand\frontstuff[1]{
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}
+}
+
+% add periods to numbers in toc
+\let \savenumberline \numberline
+\def \numberline#1{\savenumberline{#1.}}
+
+% add dots to toc (from name to page number)
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% bibliography name and style
+\renewcommand{\bibname}{References}
+\defaultbibliographystyle{abbrv}
+
+% set caption font size
+\captionsetup[figure]{font=footnotesize,labelfont=footnotesize}
+\captionsetup[table]{font=footnotesize,labelfont=footnotesize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% https://github.com/samreynoldsmath/texmf
+\input{preamble/macros.tex}
+
+\newcommand\PSU{Fariborz Maseeh Department of Mathematics and Statistics,
+Portland State University, Portland, OR 97201}
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREM ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% https://github.com/samreynoldsmath/texmf
+\def\theoremnumberstyle{chaptersection}
+\input{sams-theorems.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLEPAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% due to bibunits package
+\bibliographyunit[\chapter]
+
+% no page number on title page
+\pagenumbering{gobble}
+
+% title page content
+\input{src/front-matter/title-page.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FRONT MATTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+\pagenumbering{roman}
+\doublespacing
+
+\frontstuff{Abstract}
+\input{src/front-matter/abstract.tex}
+
+\frontstuff{Dedication}
+\input{src/front-matter/dedication.tex}
+
+\frontstuff{Acknowledgements}
+\input{src/front-matter/acknowledgements.tex}
+
+% table of contents
+\singlespacing
+\tableofcontents
+
+% list of figures
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+% list of tables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+\doublespacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN BODY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{src/introduction.tex}
+\input{src/paper1/paper1.tex}
+\input{src/paper2/paper2.tex}
+\input{src/conclusion.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% exclude appendix from lists of tables and figures
+\let\svaddcontentsline\addcontentsline
+\renewcommand\addcontentsline[3]{%
+  \ifthenelse{\equal{#1}{lof}}{}%
+  {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
+
+\appendix
+\input{src/appendix-a/extensions.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,180 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{stmaryrd} 			% brackets
+\usepackage[new]{old-arrows} 	% arrows
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Equation Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\eqn[1]{
+	\begin{align*}
+		#1
+	\end{align*}
+}
+
+\newcommand\labeqn[1]{
+	\begin{align}
+		#1
+	\end{align}
+}
+
+\newcommand\bracegroup[1]{
+	\left\{
+	\begin{aligned}
+		#1
+	\end{aligned}
+	\right.
+}
+
+\newcommand\bracketgroup[1]{
+	\left[
+	\begin{aligned}
+		#1
+	\end{aligned}
+	\right.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Text Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\tbf{\textbf}		% text bold
+\newcommand\mono{\texttt}		% fixed width
+\newcommand\ul{\underline}		% underlined
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\bf{\boldsymbol} 	% math bold
+\newcommand\bb{\mathbb} 		% blackboard bold
+\renewcommand\cal{\mathcal}		% calligraphic
+\renewcommand\bar{\overline}	% overline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Special Letters and Symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eps}{\varepsilon}	% curvy epsilon
+\newcommand{\phii}{\varphi} 	% curvy phi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hats and Tildes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\hat\widehat
+\renewcommand\tilde\widetilde
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Brackets, Braces, and Bars
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\DeclareAutoPairedDelimiter}[3]{
+	\expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}
+	\DeclareRobustCommand{#1}{\csname Auto\string#1\endcsname*}}
+
+\DeclareAutoPairedDelimiter{\paren}{ ( }{ ) }			% parentheses
+\DeclareAutoPairedDelimiter{\bracket}{ [ }{ ] }			% square brackets
+\DeclareAutoPairedDelimiter{\curly}{ \{ }{ \} }			% curly braces
+\DeclareAutoPairedDelimiter{\abs}{|}{|}					% absolute value
+\DeclareAutoPairedDelimiter{\norm}{\|}{\|}				% norm
+\DeclareAutoPairedDelimiter{\ip}{\langle}{\rangle}		% inner product
+\DeclareAutoPairedDelimiter{\ceil}{\lceil}{\rceil} 		% ceiling
+\DeclareAutoPairedDelimiter{\floor}{\lfloor}{\rfloor} 	% floor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Special Sets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nada}{\varnothing} % empty set
+\newcommand{\C}{\mathbb{C}}		% complex plane
+\newcommand{\F}{\mathbb{F}}		% arbitrary field
+\newcommand{\K}{\mathbb{K}}		% arbitrary field
+\newcommand{\N}{\mathbb{N}}		% natural numbers
+\renewcommand{\P}{\mathbb{P}}		% polynomials
+\newcommand{\Q}{\mathbb{Q}}		% rationals
+\newcommand{\R}{\mathbb{R}}		% reals
+\newcommand{\Z}{\mathbb{Z}}		% integers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Relations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% open subset symbol: \subset + \circ (Thank you, Jay!)
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}      {LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\subsetocirc}{\mathord}{symbols2}{"05}
+\newcommand{\subseto}{\mathop{\,\subsetocirc\,}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algebra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\inv{^{-1}} % inverse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Complex Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ii}{\mathfrak{i}} 	% complex i
+\renewcommand\Re{\text{Re}\,}
+\renewcommand\Im{\text{Im}\,}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Matrices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}} % soft
+\newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}} % hard
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Linear Algebra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\t{^\intercal} 			% transpose
+\newcommand\invt{^{-\intercal}} 		% inverse transpose
+\newcommand\spn{\operatorname{span}} 	% span
+\newcommand\range{\operatorname{range}}	% range
+\newcommand\nul{\operatorname{null}} 	% null space
+\newcommand\rank{\operatorname{rank}} 	% rank
+\newcommand\tr{\operatorname{tr}} 	% trace
+\newcommand\trace\tr
+\newcommand\diag{\operatorname{diag}}	% diagonal
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Calculus
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\div}{\operatorname{div}}
+\DeclareMathOperator{\grad}{grad} % gradient
+\DeclareMathOperator{\curl}{curl}	% curl
+\newcommand\pdd[2]{\dfrac{\partial #1}{\partial #2}} % partial derivative
+\newcommand\pd[2]{\frac{\partial #1}{\partial #2}} % partial derivative
+\newcommand\nd[1]{\frac{\partial #1}{\partial\bf{n}}} % normal derivative
+\newcommand\td[1]{\frac{\partial #1}{\partial\bf{t}}} % tangential derivative
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator{\weakto}{\rightharpoonup}
+\DeclareMathOperator*{\embed}{\longhookrightarrow}
+\DeclareMathOperator{\dom}{dom}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optimization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\st{\text{st}\;}
+\newcommand\psdcone{S^n_+}
+\newcommand\aff{\text{aff}\;}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Geometry
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator*{\diam}{diam}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Messages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\goodbye{So long, farewell, Auf Wiedersehen, goodbye!}

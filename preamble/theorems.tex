@@ -1,0 +1,117 @@
+\usepackage{ifthen}
+\usepackage{amsthm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Numbering Style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% In your document, prior to importing this file, include the line
+%
+% 	\def\theoremnumberstyle{MyStyle}
+%
+% where MyStyle is one of:
+%
+% 	none			(Theorem)
+% 	free			(Theorem X)
+% 	section			(Theorem <section>.X)
+%	chapter			(Theorem <chapter>.X)
+% 	chaptersection 	(Theorem <chapter>.<section>.X)
+
+\theoremstyle{definition}
+
+\ifthenelse{
+	\equal{\theoremnumberstyle}{none}
+}{
+	\newtheorem*{thm}{Theorem}
+}
+
+\ifthenelse{
+	\equal{\theoremnumberstyle}{free}
+}{
+	\newtheorem{thm}{Theorem}
+}{}
+
+\ifthenelse{
+	\equal{\theoremnumberstyle}{section}
+}{
+	\newtheorem{thm}{Theorem}[section]
+}{}
+
+\ifthenelse{
+	\equal{\theoremnumberstyle}{chapter}
+}{
+	\newtheorem{thm}{Theorem}[chapter]
+}{}
+
+\ifthenelse{
+	\equal{\theoremnumberstyle}{chaptersection}
+}{
+	\newtheorem{thm}{Theorem}[chapter]
+	\numberwithin{thm}{section}
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem Types
+%
+% To add a new theorem environment, we need to add it *twice*: both the
+% unnumbered and numbered versions.
+% (There is probably a better way to do this.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{
+	\equal{\theoremnumberstyle}{none}
+}{
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Unnumbered Theorem Types
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% typical theorem environments
+\newtheorem*{alg}{Algorithm}
+\newtheorem*{cnj}{Conjecture}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{dfn}{Definition}
+\newtheorem*{exm}{Example}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{prp}{Proposition}
+\newtheorem*{rmk}{Remark}
+
+% less common
+\newtheorem*{claim}{Claim}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{fact}{Fact}
+\newtheorem*{goal}{Goal}
+\newtheorem*{idea}{Idea}
+\newtheorem*{obs}{Observation}
+\newtheorem*{q}{Question}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+}{
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Numbered Theorem Types
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% typical theorem environments
+\newtheorem{alg}[thm]{Algorithm}
+\newtheorem{cnj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{exm}[thm]{Example}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{rmk}[thm]{Remark}
+
+% less common
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{goal}[thm]{Goal}
+\newtheorem{idea}[thm]{Idea}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{q}[thm]{Question}
+\newtheorem{motivation}[thm]{Motivation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
