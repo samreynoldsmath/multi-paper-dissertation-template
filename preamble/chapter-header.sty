@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{chapterheading}
+  [2024/05/14 v0.01 Chapter heading page for multi-paper dissertation]
+
+% \RequirePackage{MyDependency}
+
+\newcommand{\ChapterHeader}[6]{
+\subsection*{Full citation information}
+  \begin{quote}
+    #1
+  \end{quote}
+
+\subsection*{Authors}
+  \textit{#2}
+
+\subsection*{Author contribution statement}
+  #3
+
+\subsection*{DOI}
+  #4
+
+\subsection*{Hyperlink to the publication in PDXScholar}
+  \begin{quote}
+    #5
+  \end{quote}
+
+\subsection*{Additional information}
+  #6
+}
+
+\endinput
