@@ -17,6 +17,7 @@
     includefoot     % page number does not protrude into bottom margin
     ]{geometry}     % set margins
 \usepackage{titlesec}	                    % custom section titles
+\usepackage{appendix}                       % customizable appendices
 \usepackage{caption}                        % table and figure captions
 \usepackage[nodisplayskipstretch]{setspace} % double spacing
 \usepackage[hidelinks]{hyperref} 	        % clickable links/toc
@@ -172,8 +173,15 @@ Portland State University, Portland, OR 97201}
   \ifthenelse{\equal{#1}{lof}}{}%
   {\ifthenelse{\equal{#1}{lot}}{}{\svaddcontentsline{#1}{#2}{#3}}}}
 
-\appendix
-\input{src/appendix-a/extensions.tex}
+% add the "Appendix" to the appendix titles
+\titleformat{\chapter}[hang]{\bfseries\normalsize\centering}{Appendix \thechapter.}{5pt}{}[]
+\renewcommand{\appendixname}{Appendix}
+\appendixtitleon    % puts \appendixname before each appendix title
+\appendixtitletocon % puts \appendixname before each TOC entry
+
+\begin{appendices}
+    \input{src/appendix-a/extensions.tex}
+\end{appendices}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
