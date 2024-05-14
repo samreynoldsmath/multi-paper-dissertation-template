@@ -15,6 +15,12 @@ A multi-paper dissertation is a dissertation that consists of multiple papers th
   ```bash
   git clean -ix .
   ```
+- In a 12pt font LaTeX document, the following font sizes are available:
+  | Command | Size |
+  | --- | --- |
+  | `\normalsize` | 12pt |
+  | `\small` | 11pt |
+  | `\footnotesize` | 10pt |
 
 ## See Also
 - Other [LaTeX templates](https://github.com/samreynoldsmath/hdt-latex-templates)
