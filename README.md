@@ -21,6 +21,8 @@ A multi-paper dissertation is a dissertation that consists of multiple papers th
   | `\normalsize` | 12pt |
   | `\small` | 11pt |
   | `\footnotesize` | 10pt |
+- Use `split` environments to split equations across multiple lines while preserving a single equation number.
+- Search for `overfull` warnings in the `.log` file to find lines that are too long.
 
 ## See Also
 - Other [LaTeX templates](https://github.com/samreynoldsmath/hdt-latex-templates)
