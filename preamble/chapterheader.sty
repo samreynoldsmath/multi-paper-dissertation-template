@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{chapterheading}
+\ProvidesPackage{chapterheader}
   [2024/05/14 v0.01 Chapter heading page for multi-paper dissertation]
 
 % \RequirePackage{MyDependency}
@@ -24,8 +24,11 @@
     #5
   \end{quote}
 
+\if\relax\detokenize{#6}\relax
+\else
 \subsection*{Additional information}
   #6
+\fi
 }
 
 \endinput
